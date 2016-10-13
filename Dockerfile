@@ -2,7 +2,6 @@ FROM ubuntu:16.04
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
-
 # ------------------------------------------------------
 # --- Install required tools
 
@@ -64,7 +63,6 @@ RUN echo y | android update sdk --no-ui --all --filter build-tools-22.0.1 | grep
 RUN echo y | android update sdk --no-ui --all --filter build-tools-21.1.2 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-20.0.0 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-19.1.0 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter build-tools-17.0.0 | grep 'package installed'
 
 # Android System Images, for emulators
 # Please keep these in descending order!
