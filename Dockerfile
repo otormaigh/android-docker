@@ -48,7 +48,6 @@ RUN echo y | android update sdk --no-ui --all --filter android-19 | grep 'packag
 RUN echo y | android update sdk --no-ui --all --filter android-18 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-17 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-16 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter android-15 | grep 'package installed'
 
 # build tools
 # Please keep these in descending order!
