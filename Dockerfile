@@ -39,6 +39,7 @@ RUN echo y | android update sdk --no-ui --all --filter extra-android-support | g
 
 # SDKs
 # Please keep these in descending order!
+RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed'
 
 # build tools
