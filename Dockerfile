@@ -44,8 +44,8 @@ RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'packag
 
 # build tools
 # Please keep these in descending order!
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.1 | grep 'package installed'
 RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.0 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.3 | grep 'package installed'
 
 # Extras
 RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
