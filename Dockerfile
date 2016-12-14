@@ -1,28 +1,28 @@
 FROM ubuntu:16.04
 
-ENV ANDROID_HOME /opt/android-sdk-linux
+ENV ANDROID_HOME /opt/tools
 
 # ------------------------------------------------------
 # --- Install required tools
 
-RUN apt-get update -qq
+RUN apt-get update
 
 # Base (non android specific) tools
 # -> should be added to bitriseio/docker-bitrise-base
 
 # Dependencies to execute Android builds
 RUN dpkg --add-architecture i386
-RUN apt-get update -qq
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git curl wget openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl wget openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
 
-RUN cd /opt && wget -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz -O android-sdk.tgz
-RUN cd /opt && tar -xvzf android-sdk.tgz
-RUN cd /opt && rm -f android-sdk.tgz
+RUN cd /opt && wget -q https://dl.google.com/android/repository/tools_r25.2.3-linux.zip -O android-sdk.zip
+RUN cd /opt && unzip android-sdk.zip
+RUN cd /opt && rm -f android-sdk.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
@@ -35,7 +35,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 #       If you don't do it this way you might get "Unknown response" in the logs,
 #         but the android SDK tool **won't** fail, it'll just **NOT** install the package.
 RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
+# RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
 
 # SDKs
 # Please keep these in descending order!
