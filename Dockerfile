@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV ANDROID_HOME /opt/tools
+ENV ANDROID_HOME /opt/android
 
 # ------------------------------------------------------
 # --- Install required tools
@@ -18,12 +18,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y unzip git curl wget openjd
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
 
-RUN cd /opt && wget -q https://dl.google.com/android/repository/tools_r25.2.3-linux.zip -O android-sdk.zip
-RUN cd /opt && unzip android-sdk.zip
-RUN cd /opt && rm -f android-sdk.zip
+RUN mkdir /opt/android
+RUN cd /opt/android && wget -q https://dl.google.com/android/repository/tools_r25.2.3-linux.zip -O android-sdk.zip
+RUN cd /opt/android && unzip android-sdk.zip
+RUN cd /opt/android && rm -f android-sdk.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}
-ENV PATH ${PATH}:${ANDROID_HOME}/bin
+ENV PATH ${PATH}:${ANDROID_HOME}/tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools/bin
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
@@ -55,8 +56,6 @@ RUN echo y | sdkmanager "extras;google;google_play_services"
 RUN echo y | sdkmanager "add-ons;addon-google_apis-google-24"
 
 RUN echo y | sdkmanager --update
-
-RUN ls -la /opt
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
