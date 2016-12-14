@@ -23,6 +23,7 @@ RUN cd /opt && unzip android-sdk.zip
 RUN cd /opt && rm -f android-sdk.zip
 
 ENV PATH ${PATH}:${ANDROID_HOME}
+ENV PATH ${PATH}:${ANDROID_HOME}/bin
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
@@ -30,32 +31,32 @@ ENV PATH ${PATH}:${ANDROID_HOME}
 # Other tools and resources of Android SDK
 #  you should only install the packages you need!
 # To get a full list of available options you can use:
-#  android list sdk --no-ui --all --extended
-# (!!!) Only install one package at a time, as "echo y" will only work for one license!
-#       If you don't do it this way you might get "Unknown response" in the logs,
-#         but the android SDK tool **won't** fail, it'll just **NOT** install the package.
-RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
-# RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
-
-# SDKs
-# Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed'
+#  sdkmanager --list
+RUN echo y | sdkmanager "platform-tools"
 
 # build tools
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.1 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.0 | grep 'package installed'
+RUN echo y | sdkmanager "build-tools;25.0.2"
+RUN echo y | sdkmanager "build-tools;25.0.1"
+RUN echo y | sdkmanager "build-tools;25.0.0"
+
+# SDKs
+# Please keep these in descending order!
+RUN echo y | sdkmanager "platforms;android-25"
+RUN echo y | sdkmanager "platforms;android-24"
 
 # Extras
-RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
+RUN echo y | sdkmanager "extras;android;m2repository"
+RUN echo y | sdkmanager "extras;google;m2repository"
+RUN echo y | sdkmanager "extras;google;google_play_services"
 
 # google apis
 # Please keep these in descending order!
-RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-24 | grep 'package installed'
+RUN echo y | sdkmanager "add-ons;addon-google_apis-google-24"
 
+RUN echo y | sdkmanager --update
+
+RUN ls -la /opt
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
