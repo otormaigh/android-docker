@@ -1,4 +1,4 @@
-FROM debian/jessie
+FROM debian:jessie
 
 ENV ANDROID_HOME /opt/android
 
