@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM debian/jessie
 
 ENV ANDROID_HOME /opt/android
 
