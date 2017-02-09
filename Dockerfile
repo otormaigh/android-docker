@@ -1,4 +1,6 @@
-FROM debian:jessie
+FROM ubuntu:16.04
+
+MAINTAINER Elliot Tormey <elliot@tapadoo.com>
 
 ENV ANDROID_HOME /opt/android
 
@@ -10,16 +12,17 @@ RUN apt-get update
 # Dependencies to execute Android builds
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gradle unzip git curl wget openjdk-7-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gradle unzip git curl wget openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
 
 RUN mkdir /opt/android
-RUN cd /opt/android && wget -q https://dl.google.com/android/repository/tools_r25.2.3-linux.zip -O android-sdk.zip
+RUN cd /opt/android && wget -q https://dl.google.com/android/repository/tools_r25.2.5-linux.zip -O android-sdk.zip
 RUN cd /opt/android && unzip android-sdk.zip && rm -f android-sdk.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
+ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 
 # ------------------------------------------------------
 # --- Install Android SDKs and other build packages
