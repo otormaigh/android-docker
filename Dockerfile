@@ -39,7 +39,6 @@ RUN echo y | sdkmanager "build-tools;25.0.1"
 RUN echo y | sdkmanager "build-tools;25.0.0"
 
 # SDKs
-# Please keep these in descending order!
 RUN echo y | sdkmanager "platforms;android-25"
 RUN echo y | sdkmanager "platforms;android-24"
 
