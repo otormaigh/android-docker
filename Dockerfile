@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Elliot Tormey <elliot@tapadoo.com>
 
+ENV PIPELINES
 ENV ANDROID_HOME /opt/android
 ENV GRADLE_HOME /opt/gradle
 
