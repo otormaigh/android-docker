@@ -43,7 +43,6 @@ ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 RUN echo y | sdkmanager "platform-tools"
 
 # Build tools
-RUN echo y | sdkmanager "build-tools;26.0.0-rc1"
 RUN echo y | sdkmanager "build-tools;25.0.2"
 RUN echo y | sdkmanager "build-tools;25.0.1"
 
