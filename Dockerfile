@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Elliot Tormey <elliot@tapadoo.com>
 
-ENV PIPELINES true
+ENV DOCKER true
 ENV ANDROID_HOME /opt/android
 ENV GRADLE_HOME /opt/gradle
 
