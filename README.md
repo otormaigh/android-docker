@@ -1,4 +1,4 @@
-Android Docker [Build Status](https://img.shields.io/docker/build/otormaigh/android-docker.svg) [Pulls](https://img.shields.io/docker/pulls/otormaigh/android-docker.svg)
+Android Docker [![Docker Build Statu](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/otormaigh/android-docker/) [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/otormaigh/android-docker/)
 =============
 
 Docker container that can be used to build Android applications. It purposely has not got many dependencies. packaged with it to save on download size.
