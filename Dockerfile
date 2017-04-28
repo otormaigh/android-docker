@@ -13,7 +13,7 @@ ENV GRADLE_HOME /opt/gradle
 RUN apt-get update
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gradle unzip git curl wget openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gradle unzip git curl wget openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386 python python-pip
 
 # ------------------------------------------------------
 # --- Download Gradle into $GRADLE_HOME
@@ -43,6 +43,7 @@ ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 RUN echo y | sdkmanager "platform-tools"
 
 # Build tools
+RUN echo y | sdkmanager "build-tools;25.0.3"
 RUN echo y | sdkmanager "build-tools;25.0.2"
 RUN echo y | sdkmanager "build-tools;25.0.1"
 
