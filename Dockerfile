@@ -45,7 +45,6 @@ RUN echo y | sdkmanager "platform-tools"
 # Build tools
 RUN echo y | sdkmanager "build-tools;25.0.3"
 RUN echo y | sdkmanager "build-tools;25.0.2"
-RUN echo y | sdkmanager "build-tools;25.0.1"
 
 # SDKs
 RUN echo y | sdkmanager "platforms;android-25"
