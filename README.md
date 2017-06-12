@@ -1,4 +1,4 @@
-Android Docker [![Docker Build Statu](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/otormaigh/android-docker/) [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/otormaigh/android-docker/)
+Android Docker [![Docker Build Status](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/otormaigh/android-docker/) [![DockerPulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/otormaigh/android-docker/)
 =============
 
 Docker container that can be used to build Android applications. It purposely has not got many dependencies. packaged with it to save on download size.
@@ -7,18 +7,4 @@ If other SDKs are required for your project, update the Dockerfile using [sdkman
 
 Whats in it?
 ------------
-
-The base image currently being used is Ubuntu 16.04. It comes preinstalled with the following Android SDK and tools.
-
-* Build tools
-  * 25.0.2
-  * 25.0.3
-* SDK
-  * android-24
-  * android-25
-* Google API
-  * android-24
-* Extras
-  * android-m2 repo
-  * google-m2 repo
-  * Google Play Services
+The base image currently being used is [frolvlad/alpine-oraclejdk8:slim](https://hub.docker.com/r/frolvlad/alpine-oraclejdk8/). It comes with no pre added SDK or build tools. If you are using Googles maven repository in your application, relevant tools will be downloaded as you build. This helps reduce the download size of this image although it does increase initial build times of your Android application.

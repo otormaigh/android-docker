@@ -29,19 +29,6 @@ ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 # To get a full list of available options you can use:
 #     sdkmanager --list
 
-RUN echo y | sdkmanager "platform-tools"
-
-# Build tools
-# RUN echo y | sdkmanager "build-tools;26.0.0"
-
-# SDKs
-# RUN echo y | sdkmanager "platforms;android-26"
-
-# Extras
-# RUN echo y | sdkmanager "extras;android;m2repository"
-# RUN echo y | sdkmanager "extras;google;m2repository"
-# RUN echo y | sdkmanager "extras;google;google_play_services"
-
 # Final update just to be sure to be sure
 RUN echo y | sdkmanager --update
 
