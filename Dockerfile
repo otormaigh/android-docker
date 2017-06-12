@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM frolvlad/alpine-oraclejdk8:slim
 
 MAINTAINER Elliot Tormey <elliot.tormey@gmail.com>
 
@@ -10,14 +10,13 @@ ENV ANDROID_HOME /opt/android
 # ------------------------------------------------------
 
 RUN apk add --update
-RUN DEBIAN_FRONTEND=noninteractive apk add bash unzip wget git libc6-compat libstdc++ libgcc
+RUN apk add --no-cache bash unzip wget git
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_HOME
 # ------------------------------------------------------
 
-RUN mkdir /opt
-RUN mkdir $ANDROID_HOME
+RUN mkdir -p $ANDROID_HOME
 RUN cd $ANDROID_HOME && wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O android-sdk.zip
 RUN cd $ANDROID_HOME && unzip android-sdk.zip && rm -f android-sdk.zip
 ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
