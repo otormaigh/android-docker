@@ -29,6 +29,8 @@ ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 # To get a full list of available options you can use:
 #     sdkmanager --list
 
+RUN echo y | sdkmanager "platform-tools"
+
 # Final update just to be sure to be sure
 RUN echo y | sdkmanager --update
 
