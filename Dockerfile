@@ -32,7 +32,7 @@ ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 RUN echo y | sdkmanager "platform-tools"
 
 # Final update just to be sure to be sure
-RUN echo y | sdkmanager --update
+RUN yes | sdkmanager --licenses && sdkmanager --update
 
 # ------------------------------------------------------
 # --- Cleanup and rev num
