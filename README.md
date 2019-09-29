@@ -7,4 +7,4 @@ If other SDKs are required for your project, update the Dockerfile using [sdkman
 
 Whats in it?
 ------------
-The base image currently being used is [frolvlad/alpine-oraclejdk8:slim](https://hub.docker.com/r/frolvlad/alpine-oraclejdk8/). It comes with no pre added SDK or build tools. If you are using Googles maven repository in your application, relevant tools will be downloaded as you build. This helps reduce the download size of this image although it does increase initial build times of your Android application.
+The base image currently being used is [frolvlad/alpine-java:jdk8-slim](https://hub.docker.com/r/frolvlad/alpine-java). It comes with no pre added SDK or build tools. If you are using Googles maven repository in your application, relevant tools will be downloaded as you build. This helps reduce the download size of this image although it does increase initial build times of your Android application.

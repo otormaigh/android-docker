@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:slim
+FROM frolvlad/alpine-java:jdk8-slim
 
 MAINTAINER Elliot Tormey <elliot.tormey@gmail.com>
 
