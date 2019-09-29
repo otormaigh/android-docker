@@ -17,7 +17,7 @@ RUN apk add --no-cache bash unzip wget git
 # ------------------------------------------------------
 
 RUN mkdir -p $ANDROID_HOME
-RUN cd $ANDROID_HOME && wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O android-sdk.zip
+RUN cd $ANDROID_HOME && wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk.zip
 RUN cd $ANDROID_HOME && unzip android-sdk.zip && rm -f android-sdk.zip
 ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin
 
